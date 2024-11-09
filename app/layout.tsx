@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/app/components/navbar'
 import { AuthContextProvider } from './context/AuthContext' 
+import Link from 'next/link'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +26,7 @@ export default function RootLayout({
         <AuthContextProvider>
           <Navbar />{children}
       </AuthContextProvider>
-      Terms and condition
+      <Link href={'https://policies.google.com/terms/'}>Terms and condition</Link>
       </body>
     </html>
   )
