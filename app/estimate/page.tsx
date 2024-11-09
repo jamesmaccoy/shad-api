@@ -3,6 +3,21 @@ import React, { useEffect, useState } from "react";
 import { UserAuth } from "@/app/context/AuthContext";
 import Spinner from "@/app/components/spinner";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Link from "next/link";
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
+
+
+
+import {
   collection,
   addDoc,
   getDoc,
@@ -85,17 +100,22 @@ const page = () => {
       ) : user ? (
         <main className='flex min-h-screen flex-col items-center justify-between sm:p-24 p-4'>
       <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm '>
-        <h1 className='text-4xl p-4 text-center'>Add a case</h1>
-        <div className='bg-slate-800 p-4 rounded-lg'>
+      <h3>the components ✨ Vision</h3>
+        <h1 className="text-3xl font-bold center">R{total}</h1>
+        <h3>premium per month</h3>
+        
+        <div className='bg-slate-100 p-4 rounded-lg'>
           <form className='grid grid-cols-6 items-center text-black'>
-            <input
+        
+
+            <Input
               value={newItem.name}
               onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
               className='col-span-3 p-3 border'
               type='text'
               placeholder='Enter Item'
             />
-            <input
+            <Input
               value={newItem.price}
               onChange={(e) =>
                 setNewItem({ ...newItem, price: e.target.value })
@@ -104,43 +124,39 @@ const page = () => {
               type='number'
               placeholder='Enter $'
             />
-            <button
-              onClick={addItem}
-              className='text-white bg-slate-950 hover:bg-slate-900 p-3 text-xl'
-              type='submit'
-            >
-              +
-            </button>
+          
+            <Button variant="secondary" size="lg" onClick={addItem} type='submit'>Customise</Button>
+
           </form>
-          <ul>
-            {items.map((item, id) => (
-              <li
-                key={id}
-                className='my-4 w-full flex justify-between bg-slate-950'
-              >
-                <div className='p-4 w-full flex justify-between'>
-                  <span className='capitalize'>{item.name}</span>
-                  <span>${item.price}</span>
-                </div>
-                <button
-                  onClick={() => deleteItem(item.id)}
-                  className='ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900 w-16'
-                >
-                  X
-                </button>
-              </li>
-            ))}
-          </ul>
-          {items.length < 1 ? (
-            ''
-          ) : (
-            <div className='flex justify-between p-3'>
-              <span>Total</span>
-              <span>${total}</span>
-            </div>
-          )}
+          
+      
         </div>
       </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+      {items.map((item) => (
+        <Card key={item.id}> 
+          <CardHeader>
+            <CardTitle>{item.name}</CardTitle>
+            <Link href={`/${item.name.toLowerCase()}`}>
+              {item.name}
+            </Link>
+            {/* Assuming 'item.description' exists in your data */}
+            <CardDescription>{item.description || "No description"}</CardDescription> 
+          </CardHeader>
+          <CardContent>{item.price}</CardContent>
+  <CardFooter> <button onClick={() => deleteItem(item.id)}>remove</button>
+  </CardFooter>
+        </Card>
+      ))}
+    </div>
+    <section>
+        <div className='p-8'>
+          <h2 className='font-semibold'>Select a Case to see list of potential claims</h2>
+          <Link href="/atoms"><Button size={"lg"}>Continue</Button></Link>
+        </div>
+      </section>
+    
     </main>
       ) : (
         <p>You must be invited by a client first - Request to join.</p>

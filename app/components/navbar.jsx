@@ -42,7 +42,7 @@ const Navbar = () => {
 
         {!user ? null : (
           <li className="p-2 cursor-pointer">
-            <Link href="/atoms">Cases</Link>
+            <Link href="/atoms">✨ Vision</Link>
           </li>
         )}
       </ul>

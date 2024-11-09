@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { use } from 'react'; // Import 'use' from 'react'
 import { Dino } from "../types";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch"
+
+
 
 type RouteParams = { params: Promise<{ opinion: string }> };
 
@@ -27,6 +31,11 @@ export default function Opinion({ params }: RouteParams) {
     <main>
       <h1>{opinionData.name}</h1>
       <p>{opinionData.description}</p>
+      <Switch />
+
+      <Link href="/add">
+          <Button variant="outline" size="lg">Add component</Button>
+          </Link>
       <Link href="/">🠠 Back to all components</Link>
     </main>
   );

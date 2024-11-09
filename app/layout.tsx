@@ -24,6 +24,7 @@ export default function RootLayout({
         <AuthContextProvider>
           <Navbar />{children}
       </AuthContextProvider>
+      Terms and condition
       </body>
     </html>
   )

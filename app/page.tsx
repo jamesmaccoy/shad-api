@@ -41,7 +41,9 @@ export default function Home() {
     <main>
       <section className="py-24">
         <div>
-          <Button variant="outline">Secondary action</Button>
+        <Link href="/estimate">
+          <Button variant="outline" size="lg">Add Molecule</Button>
+          </Link>
         </div>
         <div className="container">
           <h1 className="text-3xl font-bold">

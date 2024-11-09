@@ -1,5 +1,7 @@
 
 //'use client'
+
+
 import Atom from '@/components/atom'
 import Atoms from '@/components/atoms'
 
@@ -31,9 +33,9 @@ export async function generateStaticParams() {
   return paths
 }
 
-export default function Page({ params }: { params: { slug?: string[] } }) {
+export default async function Page({ params }: { params: { slug?: string[] } }) {
     
-  const { slug } = params
+  const { slug } = await params;
   
     if (!slug) {
       
