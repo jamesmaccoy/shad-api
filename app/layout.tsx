@@ -26,7 +26,7 @@ export default function RootLayout({
         <AuthContextProvider>
           <Navbar />{children}
       </AuthContextProvider>
-      <Link href={'https://policies.google.com/terms/'}>Terms and condition</Link>
+      <Link href={'/terms'}>Terms and condition</Link>
       </body>
     </html>
   )

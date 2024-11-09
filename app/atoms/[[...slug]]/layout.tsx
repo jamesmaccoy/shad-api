@@ -56,7 +56,7 @@ export default async function AtomsLayout({
             <SheetTitle>R40</SheetTitle>
             <SheetDescription><p>Total monthly payment</p>
               
-              <Button>Confirm</Button><p><Link href={'https://policies.google.com/terms/'}>terms and conditions</Link></p></SheetDescription>
+              <Button>Confirm</Button><p><Link href={'/terms'}>terms and conditions</Link></p></SheetDescription>
           </SheetHeader>
         </SheetContent>
       </Sheet>
